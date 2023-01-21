@@ -1,9 +1,7 @@
 package br.com.americanas.polotech.ProOri.Projeto02.BancoDeDados;
 
 import br.com.americanas.polotech.ProOri.Projeto02.Main;
-import br.com.americanas.polotech.ProOri.Projeto02.Produtos.Brinquedo;
 import br.com.americanas.polotech.ProOri.Projeto02.Produtos.Produto;
-import jdk.jshell.execution.Util;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -23,7 +21,6 @@ public class Carrinho {
         this.valorTotalCarrinho = valorTotalCarrinho;
         this.carrinho = carrinho;
     }
-
 
     public BigDecimal getCompra() {
         return compra;
@@ -59,7 +56,6 @@ public class Carrinho {
 
     public Carrinho() {
         System.out.println("Usando o carrinho...");
-
     }
 
     @Override
@@ -100,35 +96,28 @@ public class Carrinho {
     }
 
     public static void pagar() {
-        System.out.println("Seu Carrinho: |---- ");
+        BigDecimal totalCarrinho = carrinho.stream().map(Produto::getPreco).reduce(BigDecimal::add).get();
+
+        System.out.println("\nSeu Carrinho: |---- ");
         carrinho.stream().forEach(produtoCarrinho -> System.out.println(produtoCarrinho.toString()));
-        System.out.printf("TOTAL de Produtos: %s\n", carrinho.stream().map(Produto::getId).count());
 
+        System.out.printf("\tTOTAL de Produtos: %s\n", carrinho.stream().map(Produto::getId).count());
 
-//        List[] totalPrecos = new List[0];
-//        carrinho.stream().forEach(produto -> produto.getPreco().add(totalPrecos));
+        System.out.printf("\nO produto mais CARO do Carrinho: R$ %s", carrinho.stream().map(Produto::getPreco).max(BigDecimal::compareTo).get().toString());
 
+        System.out.printf("\nO produto mais BARATO do Carrinho: R$ %s", carrinho.stream().map(Produto::getPreco).min(BigDecimal::compareTo).get().toString());
 
+        System.out.printf("\nOs produtos Multiplicados do Carrinho: R$ %s", carrinho.stream().map(Produto::getPreco).reduce(BigDecimal::multiply).get().toString());
 
-        List<BigDecimal> listaPrecos = new ArrayList<>();
-        carrinho.stream().forEach(produto -> listaPrecos.add(produto.getPreco()));
-//        carrinho.stream().forEach(produto -> lista.add(produto.getPreco()));
+        System.out.printf("\nO SOMA dos produtos do Carrinho: R$ %s\n", carrinho.stream().map(Produto::getPreco).reduce(BigDecimal::add).get().toString());
 
+        System.out.printf("\nA compra possui os Valores: %s\n", carrinho.stream().map(Produto::getPreco).collect(Collectors.toList()));
 
+        //---- O mesmo que o código acima mas adicionando à uma lista -----
+//        List<BigDecimal> listaPrecos = new ArrayList<>();
+//        carrinho.stream().forEach(produto -> listaPrecos.add(produto.getPreco()));
+//        System.out.printf("\nA compra possui os Valores: %s\n", listaPrecos);
 
-        BigDecimal valorTotal = BigDecimal.valueOf(0);
-        carrinho.stream().forEach(produto -> valorTotal.add(produto.getPreco()));
-        System.out.println(valorTotal);
-
-//        carrinho.forEach(produto -> { produto.getPreco().add((BigDecimal)lista).toString();});
-//        System.out.println(lista.stream().count());
-//
-//
-        System.out.printf("\tValor Total das Compras: %s\n", listaPrecos);
-
-        System.out.println(listaPrecos.getClass());
-        listaPrecos.forEach(System.out::println);
-
-
+        System.out.printf("::: Valor Total de: R$ %s :::\n\n", totalCarrinho);
     }
 }
