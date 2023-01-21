@@ -7,7 +7,6 @@ import br.com.americanas.polotech.ProOri.Projeto02.Util.ProdutosEnum;
 
 import java.math.BigDecimal;
 import java.util.List;
-import java.util.Locale;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
@@ -30,7 +29,6 @@ public class Produto {
 
     public void setId() {
         this.id = Main.getContId(Main.contId);
-
     }
 
     public BigDecimal getPreco() {
@@ -41,10 +39,8 @@ public class Produto {
         this.preco = preco;
     }
 
-
     public Produto() {
     }
-
     @Override
     public String toString() {
         return "Produto {" +
@@ -74,8 +70,6 @@ public class Produto {
         System.out.println(produtoNovo);
         System.out.println("Produto adicionado!");
     }
-
-
 
     public void criarProduto() {
         Produto produto = new Produto();
