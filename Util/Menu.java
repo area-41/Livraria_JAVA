@@ -5,14 +5,11 @@ import br.com.americanas.polotech.ProOri.Projeto02.BancoDeDados.Estoque;
 import br.com.americanas.polotech.ProOri.Projeto02.Main;
 import br.com.americanas.polotech.ProOri.Projeto02.Produtos.*;
 import br.com.americanas.polotech.ProOri.Projeto02.Produtos.Musica;
-
-import java.math.BigDecimal;
 import java.util.Scanner;
 
 public class Menu {
 
     public Menu(){
-
     }
 
     public static void menu(){
@@ -51,6 +48,7 @@ public class Menu {
                     }
                     case 5 -> {
                         System.out.println("--Estoque Individual--");
+                        Estoque.getEstoqueListaIndividual();
                     }
                     case 6 -> {
                         System.out.println("--Carrinho Lista--");
@@ -79,7 +77,7 @@ public class Menu {
     }
 
         public static void menuProduto(){
-            System.out.println("Qual Produto >>> ALBUM, BRINQUEDO, FILME, JOGO, LIVRO");
+            System.out.println("Qual Produto >>> MUSICA, BRINQUEDO, FILME, JOGO, LIVRO");
             ProdutosEnum opcao = ProdutosEnum.valueOf(Main.sc.nextLine().toUpperCase());
             switch (opcao) {
                 case MUSICA -> {
