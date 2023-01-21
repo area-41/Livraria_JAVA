@@ -2,27 +2,21 @@ package br.com.americanas.polotech.ProOri.Projeto02.Produtos;
 
 import br.com.americanas.polotech.ProOri.Projeto02.BancoDeDados.Estoque;
 import br.com.americanas.polotech.ProOri.Projeto02.Main;
-
 import java.math.BigDecimal;
 import java.util.Scanner;
 
 public class Musica extends Produto {
 
     String musicos;
-
     String genero;
     String selos;
 
     public Musica() {
-
     }
-
-
 
     public String getMusicos() {
         return musicos;
     }
-
     public void setMusicos(String musicos) {
         this.musicos = musicos;
     }
@@ -30,7 +24,6 @@ public class Musica extends Produto {
     public String getGenero() {
         return genero;
     }
-
     public void setGenero(String genero) {
         this.genero = genero;
     }
@@ -38,7 +31,6 @@ public class Musica extends Produto {
     public String getSelos() {
         return selos;
     }
-
     public void setSelos(String selos) {
         this.selos = selos;
     }
@@ -109,7 +101,7 @@ public class Musica extends Produto {
         System.out.println("O quê do Álbum? >>> NOME, PRECO, MUSICOS, GENERO, SELOS");
         String oQueAlterar = Main.sc.nextLine();
         oQueAlterar = oQueAlterar.replace("class br.com.americanas.polotech.ProOri.Projeto02.Produtos.","").toUpperCase();
-        ParametrosEnum parametrosEnum = ParametrosEnum.valueOf(oQueAlterar);
+        Musica.ParametrosEnum parametrosEnum = ParametrosEnum.valueOf(oQueAlterar);
         switch (parametrosEnum){
             case NOME -> {
                 Main.sc = new Scanner(System.in);
