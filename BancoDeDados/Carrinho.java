@@ -119,5 +119,26 @@ public class Carrinho {
 //        System.out.printf("\nA compra possui os Valores: %s\n", listaPrecos);
 
         System.out.printf("::: Valor Total de: R$ %s :::\n\n", totalCarrinho);
+
+        System.out.println("\n\tConfirmar compra? [1] sim ou [2] não");
+        short escolha = Main.sc.nextShort();
+        switch (escolha){
+            case 1 -> {
+                System.out.printf("\nOs indices dos itens comprados foram: %s\n", carrinho.stream().map(Produto::getId).collect(Collectors.toList()));
+                System.out.println("Compra confirmada...");
+                
+                carrinho.stream().forEach(produtoParaComprar -> Estoque.estoqueLista.remove(produtoParaComprar));
+                System.out.println("Removido produto do estoque!");
+
+                System.out.printf("Valor adicionado ao caixa. \nValor no Caixa: R$ %s\n\n", Caixa.caixaRegistradora.add(totalCarrinho));
+                carrinho.clear();
+            }
+            case 2 -> {
+                System.out.println("Operação cancelada.");
+            }
+            default -> {
+                System.out.println("Opção inválida, operação cancelada.");
+            }
+        }
     }
 }
