@@ -1,7 +1,6 @@
 package br.com.americanas.polotech.ProOri.Projeto02.BancoDeDados;
 
 import br.com.americanas.polotech.ProOri.Projeto02.Produtos.Produto;
-
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,20 +9,19 @@ public class Caixa {
 
     BigDecimal compra;
     BigDecimal contaUsuario;
-    BigDecimal caixaRegistradora;
+    static BigDecimal caixaRegistradora = BigDecimal.valueOf(0);
     BigDecimal carteira;
 
     public static List<Produto> caixa = new ArrayList<>();
 
-    public Caixa(BigDecimal compra, BigDecimal contaUsuario, BigDecimal caixaRegistradora, BigDecimal carteira) {
+    public Caixa(BigDecimal compra, BigDecimal contaUsuario, List<BigDecimal> caixaRegistradora, BigDecimal carteira) {
         this.compra = compra;
         this.contaUsuario = contaUsuario;
-        this.caixaRegistradora = caixaRegistradora;
+        this.caixaRegistradora = (BigDecimal) caixaRegistradora;
         this.carteira = carteira;
     }
 
-    public Caixa() {
-    }
+    public Caixa() {}
 
     public BigDecimal getCompra() {
         return compra;
@@ -42,11 +40,11 @@ public class Caixa {
     }
 
     public BigDecimal getCaixaRegistradora() {
-        return caixaRegistradora;
+        return (BigDecimal) caixaRegistradora;
     }
 
     public void setCaixaRegistradora(BigDecimal caixaRegistradora) {
-        this.caixaRegistradora = caixaRegistradora;
+        this.caixaRegistradora = (BigDecimal) caixaRegistradora;
     }
 
     public BigDecimal getCarteira() {
@@ -74,6 +72,4 @@ public class Caixa {
                 ", carteira=" + carteira +
                 '}';
     }
-
-
 }
